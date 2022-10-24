@@ -30,9 +30,3 @@
         }
     }
 </script>
-
-<style scoped>
-.example {
-    background: #000;
-}
-</style>
