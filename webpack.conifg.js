@@ -1,5 +1,6 @@
 const path = require('path');
 const { VueLoaderPlugin } = require('vue-loader')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
     mode: 'production',
@@ -24,11 +25,18 @@ module.exports = {
                 }
             },
             {
-                test: /(\.less|\.css)$/,
+                test: /(?<!\.vue)(\.less|\.css)$/,
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    'css-loader',
+                    'less-loader',
+                ]
+            },
+            {
+                test: /\.vue\.css$/,
                 use: [
                     'vue-style-loader',
                     'css-loader',
-                    'less-loader',
                 ]
             },
         ],
@@ -45,5 +53,14 @@ module.exports = {
 
     plugins: [
         new VueLoaderPlugin(),
+        new MiniCssExtractPlugin({
+            filename: 'style.css',
+        }),
     ],
+
+    performance: {
+        hints: false,
+        maxEntrypointSize: 512000,
+        maxAssetSize: 512000
+    }
 };
