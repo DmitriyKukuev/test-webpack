@@ -10,7 +10,6 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "bootstrap": "^5.2.2",
     "css-loader": "^6.7.1",
     "esbuild-loader": "^2.20.0",
     "less": "^4.1.3",
